@@ -1,0 +1,25 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /girl
+
+CupSize: B
+Age: 18
+Content: "CupSize: ${CupSize},Age: ${Age}"
+
+girl:
+  name: anna
+  age: 18
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/dbgirl
+    username: root
+    password: root
+  jpa:
+    hibernate:
+    #create 意思是会删掉之前的表格  重新创建一个新的表格
+    #update 与create不同的是也会新建一个表  但是如果有数据的话不会删除之前的数据
+      ddl-auto: update
+    show-sql: true
