@@ -1,5 +1,6 @@
-package com.girl;
+package com.girl.controller;
 
+import com.girl.properties.GirlProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -28,14 +29,14 @@ public class HelloController {
     @RequestMapping(value = {"/hello", "/hi"}, method = RequestMethod.GET)
     public String hello() {
         //return "hello spring boot!!!" + CupSize + " " + Age + " " + Content;
-        return girl.getName();
+        return girl.getCupSize();
         //return "index";
     }
 
     @RequestMapping(value = {"/hellopost", "/hipost"}, method = RequestMethod.POST)
     public String helloPost() {
         //return "hello spring boot!!!" + CupSize + " " + Age + " " + Content;
-        return girl.getName();
+        return girl.getCupSize();
         //return "index";
     }
 

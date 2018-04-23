@@ -1,4 +1,4 @@
-package com.girl;
+package com.girl.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
@@ -10,15 +10,16 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties(prefix="girl")
 public class GirlProperties {
-    private String name;
+    private String cupSize;
+
     private Integer age;
 
-    public String getName() {
-        return name;
+    public String getCupSize() {
+        return cupSize;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCupSize(String cupSize) {
+        this.cupSize = cupSize;
     }
 
     public Integer getAge() {
@@ -27,13 +28,5 @@ public class GirlProperties {
 
     public void setAge(Integer age) {
         this.age = age;
-    }
-
-    @Override
-    public String toString() {
-        return "GirlProperties{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                '}';
     }
 }

@@ -1,5 +1,7 @@
-package com.girl;
+package com.girl.controller;
 
+import com.girl.repository.GirlRepository;
+import com.girl.domain.Girl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,20 +39,15 @@ public class GirlController {
         Girl girl = new Girl();
         girl.setAge(age);
         girl.setCupSize(cupSize);
-        girl.setId(3);
+        //girl.setId(3);
         return girlRepository.save(girl);
-        //return g.toString();
     }
 
-    /**
-     * 查询一个女生
-     *
-     * @param id
-     * @return
-     */
+
     @GetMapping(value = "/girls/{id}")
     public Girl girlFindOne(@PathVariable("id") Integer id) {
-        return girlRepository.getOne(id);
+        return girlRepository.findOne(id);
+        //return girlRepository.getOne(id);
     }
 
     /**
@@ -60,7 +57,7 @@ public class GirlController {
      */
     @DeleteMapping(value = "/girls/{id}")
     public void girlDelete(@PathVariable("id") Integer id) {
-        girlRepository.deleteById(id);
+        girlRepository.delete(id);
 
     }
 
@@ -72,14 +69,16 @@ public class GirlController {
      */
     @PutMapping(value = "/girls/{id}")
     public Girl girlUpdate(@PathVariable("id") Integer id,
-                           @PathVariable("cupSize") String cupSize,
-                           @PathVariable("age") Integer age) {
+                           @RequestParam("cupSize") String cupSize,
+                           @RequestParam("age") Integer age) {
         Girl girl = new Girl();
         girl.setId(id);
         girl.setCupSize(cupSize);
         girl.setAge(age);
-        return girlRepository.saveAndFlush(girl);
+        girl.setMoney(200.0);
+        return girlRepository.save(girl);
 
     }
+
 
 }
